@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:meet/scereen/details_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +13,67 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: SingleChildScrollView(
+          child: Padding(
+        padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 30),
+        child: Column(children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [Text('Welcome back'), CircleAvatar()],
+          ),
+          Align(alignment: Alignment.centerLeft, child: Text('All Categories')),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                TextButton(onPressed: () {}, child: Text('data')),
+                TextButton(onPressed: () {}, child: Text('data')),
+                TextButton(onPressed: () {}, child: Text('data')),
+                TextButton(onPressed: () {}, child: Text('data')),
+                TextButton(onPressed: () {}, child: Text('data')),
+                TextButton(onPressed: () {}, child: Text('data')),
+                TextButton(onPressed: () {}, child: Text('data'))
+              ],
+            ),
+          ),
+          GridView(
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, crossAxisSpacing: 15),
+            children: [artItem(), artItem(), artItem(), artItem()],
+          ),
+        ]),
+      )),
+    );
+  }
+
+  artItem() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const DetailsScreen()),
+        );
+      },
+      child: Container(
+        height: 600,
+        width: 499,
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/images/test.jpg',
+            ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Title',
+              ),
+            ),
+            Text('Description of this artmwork/'),
+          ],
+        ),
+      ),
+    );
   }
 }
