@@ -15,36 +15,71 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-          child: Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 30),
-        child: Column(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text('Welcome back'), CircleAvatar()],
-          ),
-          Align(alignment: Alignment.centerLeft, child: Text('All Categories')),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 30),
+          child: Column(children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [Text('Welcome back'), CircleAvatar()],
+            ),
+            Align(
+                alignment: Alignment.centerLeft, child: Text('All Categories')),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: Text('Paintings'),
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.grey,
+                    ),
+                  ),
+                  TextButton(onPressed: () {}, child: Text('Thanka')),
+                  TextButton(onPressed: () {}, child: Text('WoodWork')),
+                  TextButton(onPressed: () {}, child: Text('Clothes')),
+                  TextButton(onPressed: () {}, child: Text('Khukuri')),
+                  TextButton(onPressed: () {}, child: Text('data'))
+                ],
+              ),
+            ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Popular',
+              ),
+            ),
+            GridView(
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, crossAxisSpacing: 15),
               children: [
-                TextButton(onPressed: () {}, child: Text('data')),
-                TextButton(onPressed: () {}, child: Text('data')),
-                TextButton(onPressed: () {}, child: Text('data')),
-                TextButton(onPressed: () {}, child: Text('data')),
-                TextButton(onPressed: () {}, child: Text('data')),
-                TextButton(onPressed: () {}, child: Text('data')),
-                TextButton(onPressed: () {}, child: Text('data'))
+                artItem(),
+                artItem(),
+                artItem(),
               ],
             ),
-          ),
-          GridView(
-            shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, crossAxisSpacing: 15),
-            children: [artItem(), artItem(), artItem(), artItem()],
-          ),
-        ]),
-      )),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'For You',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            GridView(
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, crossAxisSpacing: 15),
+              children: [
+                artItem(),
+                artItem(),
+                artItem(),
+              ],
+            ),
+          ]),
+        ),
+      ),
     );
   }
 
@@ -76,4 +111,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  bottomBar() {}
 }
